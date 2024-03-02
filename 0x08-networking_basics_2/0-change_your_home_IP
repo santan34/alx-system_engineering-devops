@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+#Configures the host file with the following changes
+#	 - localhost resolves to 127.0.0.2
+#	- facebook.com resolves to 8.8.8.8
+cp /etc/hosts ~/hosts
+echo "127.0.0.2    localhost" >> ~/hosts
+echo "8.8.8.8      facebook.com" >> ~/hosts
+cp -f ~/hosts /etc/hosts
