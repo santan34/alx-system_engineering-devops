@@ -6,6 +6,8 @@ sudo apt-get -y install nginx
 file=/etc/nginx/sites-available/default
 sudo service nginx start
 
-msg="location / {/nreturn 301 https://www.youtube.com/watch?v=QH2-TGUlwu4;/n}"
-sudo sed -i "27i $msg" $file
-sudo service nginx restart
+msg="server_name _;\n\trewrite ^\/redirect_me https:\/\/www.youtube.com\/watch?v=QH2-TGUlwu4 permanent;"
+sudo sed -i "s/server_name _;/$msg/" $file
+
+sudo echo "https://www.youtube.com/watch?v=QH2-TGUlwu4" > /var/www/html/redirect_me
+sudo service nginx restart 
