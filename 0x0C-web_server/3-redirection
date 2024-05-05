@@ -9,5 +9,5 @@ sudo service nginx start
 msg="server_name _;\n\trewrite ^\/redirect_me https:\/\/www.youtube.com\/watch?v=QH2-TGUlwu4 permanent;"
 sudo sed -i "s/server_name _;/$msg/" $file
 
-sudo echo "https://www.youtube.com/watch?v=QH2-TGUlwu4" > /var/www/html/redirect_me
+echo "https://www.youtube.com/watch?v=QH2-TGUlwu4" > /var/www/html/redirect_me
 sudo service nginx restart 
