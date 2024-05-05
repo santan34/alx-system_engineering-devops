@@ -3,9 +3,9 @@
 
 sudo apt-get -y update
 sudo apt-get -y install nginx
-file = /etc/nginx/sites-available/default
+file=/etc/nginx/sites-available/default
 sudo service nginx start
 
-msg = "location / {/nreturn 301 https://www.youtube.com/watch?v=QH2-TGUlwu4;/n}"
+msg="location / {/nreturn 301 https://www.youtube.com/watch?v=QH2-TGUlwu4;/n}"
 sudo sed -i "27i $msg" $file
 sudo service nginx restart
