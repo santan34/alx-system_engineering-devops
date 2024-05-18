@@ -7,6 +7,7 @@ ensure => 'present',
 
 #install and update
 exec {'install_update':
+path     => '/usr/bin:/usr/sbin:/bin',
 command  => 'sudo apt-get update; sudo apt-get -y install nginx',
 provider => shell,
 }
