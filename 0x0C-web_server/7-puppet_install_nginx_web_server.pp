@@ -13,13 +13,13 @@ provider => shell,
 
 #homepage
 exec {'homepage':
-command  => 'echo "Hello World!" > /var/www/html/index.html',
+command  => 'echo "Hello World!" | sudo tee /var/www/html/index.html',
 provider => shell,
 }
 
 #redirect me page
 exec {'redirect_me':
-command  => 'echo "https://www.youtube.com/watch?v=QH2-TGUlwu4" > /var/www/html/redirect_me',
+command  => 'echo "https://www.youtube.com/watch?v=QH2-TGUlwu4" | sudo tee /var/www/html/redirect_me',
 provider => shell,
 }
 
