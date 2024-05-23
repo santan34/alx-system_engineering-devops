@@ -18,7 +18,7 @@ exec {'echo_html':
 }
 
 exec {'sed_config':
-  command  => 'sudo sed -i "/server_name _;/ a\\\trewrite ^/redirect_me https://www.youtube.com/watch?v=QH2-TGUlwu4;" /etc/nginx/sites-available/default',
+  command  =>  '/usr/bin/sudo /bin/sed -i "66i rewrite ^/redirect_me https://www.youtube.com/ permanent;" /etc/nginx/sites-available/default',
   provider => shell,
   path     => '/usr/bin:/usr/sbin:/bin',
 }
