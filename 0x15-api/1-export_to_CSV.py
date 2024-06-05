@@ -7,9 +7,11 @@ from sys import argv
 
 def export_csv(id):
     usr = requests.get(
-        f"https://jsonplaceholder.typicode.com/users/{id}").json().get("username")
+        f"https://jsonplaceholder.typicode.com/users/{id}"
+        ).json().get("username")
     data = requests.get(
-        f"https://jsonplaceholder.typicode.com/users/{id}/todos").json()
+        f"https://jsonplaceholder.typicode.com/users/{id}/todos"
+        ).json()
 
     li = []
     for i in data:
