@@ -1,12 +1,12 @@
 #!/usr/bin/python3
-# export
+"""export"""
 import json
 from requests import get
 from sys import argv
 
 
 def jsonWrite(user):
-    """writes to csv"""
+    """writes to json"""
     data = get('https://jsonplaceholder.typicode.com/todos?userId={}'.format(
         user)).json()
     usr = get('https://jsonplaceholder.typicode.com/users/{}'.format(
