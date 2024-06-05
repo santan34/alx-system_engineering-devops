@@ -22,5 +22,3 @@ def getdata(id):
 
 if __name__ == "__main__":
     getdata(int(argv[1]))
-
-
