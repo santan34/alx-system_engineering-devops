@@ -11,7 +11,7 @@ def jsonWrite(user):
         user)).json()
     usr = get('https://jsonplaceholder.typicode.com/users/{}'.format(
         user)).json().get('userusr')
-    
+
     ordered = []
     for line in data:
         ordered.append({"task": line.get('title'), "completed":
