@@ -3,9 +3,10 @@
 from requests import get
 from sys import argv
 
-def recurse(subreddit, hot_list=[], after = None):
+
+def recurse(subreddit, hot_list=[], after=None):
     """recursive hot query"""
-    head = {"user-agent":"Ndaveni Takudzwanashe"}
+    head = {"user-agent": "Ndaveni Takudzwanashe"}
     try:
         if after:
             li = get('https://www.reddit.com/r/{}/hot.json?after={}'.format(
@@ -18,8 +19,8 @@ def recurse(subreddit, hot_list=[], after = None):
         if li.get('after'):
             return recurse(subreddit, hotlist, after=li.get('after'))
         return hotlist
-    except:
-    
+    except BaseException:
+
         return None
 
 

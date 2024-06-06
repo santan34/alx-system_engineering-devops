@@ -34,7 +34,7 @@ def count_words(subreddit, words):
         count = get('https://www.reddit.com/r/{}/hot.json'.format(
             subreddit), headers=head).json().get('data')
     li_hot += [dic.get('data').get('title').lower()
-                for dic in count.get('children')]
+               for dic in count.get('children')]
     after = count.get('after')
     if after:
         return count_words(subreddit, words)
