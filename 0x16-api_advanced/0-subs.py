@@ -9,7 +9,9 @@ from requests import get
 def number_of_subscribers(subreddit):
     """subredit"""
     head = {'user-agent': 'Takudzwanashe ndaveni'}
-    response = get(f"https://www.reddit.com/r/{subreddit}/about.json",headers=head)
+    response = get(
+        f"https://www.reddit.com/r/{subreddit}/about.json",
+        headers=head)
     if response.status_code == 404:
         return 0
     else:
