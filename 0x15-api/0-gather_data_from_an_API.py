@@ -19,7 +19,7 @@ def getdata(id):
             count += 1
             comp.append(dic.get("title"))
     if (name is not None):
-        print(f"Employee {name} is done with tasks ({count}/{tot}):")
+        print(f"Employee {name} is done with tasks({count}/{tot}):")
         for i in comp:
             print(f'\t{i}')
 
