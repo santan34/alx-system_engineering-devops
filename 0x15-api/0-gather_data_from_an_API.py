@@ -21,7 +21,7 @@ def getdata(id):
     if (name is not None):
         print(f"Employee {name} is done with tasks({count}/{tot}):")
         for i in comp:
-            print(f'\t{i}')
+            print(f'     {i}')
 
 
 if __name__ == "__main__":
