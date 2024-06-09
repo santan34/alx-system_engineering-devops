@@ -1,45 +1,47 @@
 #!/usr/bin/python3
-"""advanced subs"""
-from requests import get
-from sys import argv
+"""more recursion"""
+import requests
 
-li_hot = []
-after = None
+def top_hot_subreddit(subreddit, word_list, count=0, after=None, words={}):
+    """top 10 fix"""
 
+    url = f"https://www.reddit.com/r/{subreddit}/hot.json?\
+limit=100&after={after}&count={count}"
 
-def count_all(li_hot, words):
-    count_dic = {word.lower(): 0 for word in words}
-    for title in li_hot:
-        words = title.split(' ')
-        for word in words:
-            if count_dic.get(word) is not None:
-                count_dic[word] += 1
+    headers = {"User-Agent": "ndanda"}
+    req = requests.get(url, headers=headers, allow_redirects=False)
 
-    for key in sorted(count_dic, key=count_dic.get, reverse=True):
-        if count_dic.get(key):
-            for thing in words:
-                if key == thing.lower():
-                    print("{}: {}".format(thing, count_dic[key]))
+    if req.status_code != 200:
+        return None
 
+    res = req.json().get('data')
+    title = res.get('children')
+    after = res.get('after')
+    count += res.get('dist')
+    
+    for title in title:
+        title = (title.get('data').get('title')).lower().split()
+        for word in title:
+            if word in word_list:
+                if word in words:
+                    words[word] += 1
+                else:
+                    words[word] = 1
 
-def count_words(subreddit, words):
-    global li_hot
-    global after
-    """subs"""
-    head = {'User-Agent': 'Ndaveni Takudzwanashe'}
     if after:
-        count = get('https://www.reddit.com/r/{}/hot.json?after={}'.format(
-            subreddit, after), headers=head).json().get('data')
-    else:
-        count = get('https://www.reddit.com/r/{}/hot.json'.format(
-            subreddit), headers=head).json().get('data')
-    li_hot += [dic.get('data').get('title').lower()
-               for dic in count.get('children')]
-    after = count.get('after')
-    if after:
-        return count_words(subreddit, words)
-    return count_all(li_hot, words)
+        top_hot_subreddit(subreddit, word_list, count, after, words)
+
+    return words
 
 
-if __name__ == "__main__":
-    count_words(argv[1], argv[2].split(' '))
+def counter(subreddit, word_list):
+    '''Get the top 10 hot posts for a given subreddit'''
+    word_list = [word.lower() for word in word_list]
+    result = top_hot_subreddit(subreddit, word_list)
+    if result:
+        sorted_dict = sorted(result.items(), key=lambda item: item[1],
+                             reverse=True)
+        for key, val in sorted_dict:
+            print(f"{key}: {val}")
+
+    return None
