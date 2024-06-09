@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
-# web 1
-ln -sf /etc/nginx/sites-available/default /etc/nginx/sites-enabled/default
+# short stuff
+sudo sed -i 's/8080/80/g' /etc/nginx/sites-enabled/default /etc/nginx/sites-available/default
 sudo service nginx restart
+sudo pkill -o nginx
