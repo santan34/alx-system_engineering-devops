@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
-#second debbuging project
-apt-get -y update
-apt-get -y install nginx
-sudo service start nginx
+# web 1
+ln -sf /etc/nginx/sites-available/default /etc/nginx/sites-enabled/default
+sudo service nginx restart
