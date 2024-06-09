@@ -12,7 +12,7 @@ def number_of_subscribers(subreddit):
     response = get(
         f"https://www.reddit.com/r/{subreddit}/about.json",
         headers=head)
-    if response.status_code == 404:
-        return 0
-    else:
+    if response.status_code == 400:
         return response.json().get("data").get("subscribers")
+    else:
+        return (0)
