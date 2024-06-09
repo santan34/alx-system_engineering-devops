@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+#clarity tishh
+
+sudo -u "$1" whoami 
