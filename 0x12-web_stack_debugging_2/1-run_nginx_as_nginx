@@ -1,11 +1,9 @@
-#!/usr/bin/env bash
-#chchange nginx
-
-sudo service nginx stop
+#!/usr/bin/env bash                                                            
+# set up nginx user                                                          
 pkill apache2
 sed -i 's/80 default_server/8080 default_server/' /etc/nginx/sites-available/d\
 efault
 chown nginx:nginx /etc/nginx/nginx.conf
-chmod 644 /etc/nginx/nginx.conf
+chmod 700 /etc/nginx/nginx.conf
 service nginx reload
-sudo -u nginx service nginx restart
+service nginx restart
