@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+# server tish
+sudo apt-get -y update
+sudo apt-get -y install nginx
+file = "/etc/nginx/sites-available/default"
+sudo sed -i "50i add_header X-Served-By $HOSTNAME;" $file
